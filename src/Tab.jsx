@@ -19,15 +19,16 @@ const data = [
       {
         sub: 'Ngoài trời 2',
         public: [
-          { img: 'ngoai_troi.jpeg', desc: 'Hồ bơi chuẩn resort2' },
-          { img: 'ngoai troi 2.jpeg', desc: 'Khu vườn thư giãn cuối tuần' },
+          { img: 'ko gian.jpeg', desc: 'không gian làm việc sáng tạo' },
+          { img: 'vuon.jpg', desc: 'vườn xanh' },
         ],
       },
       {
         sub: 'Trong nhà',
         public: [
-          { img: 'ngoai_troi.jpeg', desc: 'Hồ bơi chuẩn resort' },
-          { img: 'ngoai troi 2.jpeg', desc: 'Khu vườn thư giãn cuối tuần' },
+          { img: 'sanh.jpg', desc: 'sảnh đón tiếp sang trọng' },
+          { img: 'beboi.jpg', desc: 'bể bơi tầng thượng' },
+                { img: 'trongnha.jpg', desc: 'bể bơi trong nhà' }
         ],
       },
     ],
@@ -36,18 +37,42 @@ const data = [
     main: 'NỘI THẤT',
     subs: [
       {
-        sub: 'Phòng khách',
+        sub: 'Studio',
         public: [
-          { img: 'ngoai_troi.jpeg', desc: 'Hồ bơi chuẩn resort' },
-          { img: 'ngoai troi 2.jpeg', desc: 'Khu vườn thư giãn cuối tuần' },
+          { img: 'studio1.jpg'},
+          { img: 'studio2.jpg'}
         ],
       },
       {
-        sub: 'Phòng ngủ',
+        sub: '1 Phòng Ngủ',
         public: [
-          { img: 'ngoai_troi.jpeg', desc: 'Hồ bơi chuẩn resort' },
-          { img: 'studio2.jpeg', desc: 'Khu vườn thư giãn cuối tuần' },
-          { img: 'ngoai_troi.jpeg', desc: 'Khu vườn thư giãn cuối tuần' },
+          { img: '1pn1.jpg'},
+          { img: '1pn2.jpg'},
+        ],
+      },
+        {
+        sub: '2 Phòng Ngủ',
+        public: [
+          { img: '2pn1.jpeg'},
+          { img: '2pn2.jpeg'},
+        ],
+      },
+        {
+        sub: '2 Phòng Ngủ +',
+        public: [
+          { img: '2pnlus1.jpg'},
+          { img: '2pnplus2.jpg'},
+          { img: '2pnlus3.jpg'},
+        ],
+      },
+        {
+        sub: '3 Phòng Ngủ',
+        public: [
+          { img: '3pn1.jpg'},
+          { img: '3pn2.jpg'},
+          { img: '3pn3.jpg'},
+          { img: '3pn4.jpg'},
+          { img: '3pn5.jpg'},
         ],
       },
     ],
@@ -121,13 +146,13 @@ export default function Tab() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex space-x-2 mb-4 overflow-x-auto text-black">
+      <div className="space-x-2 mb-4 text-black text-lg">
         {data[activeMain].subs.map((s, i) => (
           <button
             key={i}
             onClick={() => handleSubTabClick(i)}
             className={`px-3 py-1 ${
-              i === activeSub ? 'font-bold text-sky-600' : ''
+              i === activeSub ? 'font-bold text-sky-500' : ''
             }`}
           >
             {s.sub}
@@ -147,7 +172,7 @@ export default function Tab() {
         className="!px-0"
       >
         {currentSlides.map((s, i) => (
-          <SwiperSlide key={i} className="!w-auto pb-5 flex flex-col items-center">
+          <SwiperSlide key={i} className="!w-auto pb-5 flex flex-col items-center transition-colors duration-300">
             {({ isActive }) => (
               <div
                 className={`transition-all duration-300 pt-2 ${

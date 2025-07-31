@@ -2,31 +2,30 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-import { motion, useScroll, useMotionValue } from 'framer-motion'
-import { useRef, useEffect } from 'react'
+const slides = [
+  {
+    img: "/an phuu.jpg",
+    title: 'Vị trí "kim cương" An Phú',
+    desc: 'Kết nối hoàn hảo…',
+  },
+  {
+    img: "/an phuoke.jpg",
+    title: 'Khu đô thị ven sông',
+    desc: 'Thiết kế thông minh, sống xanh mỗi ngày.',
+  },
+  {
+    img: "/masterise.webp",
+    title: 'Tâm điểm Ocean Park',
+    desc: 'Sống giữa nhịp đập đại đô thị xanh.',
+  }
+]
 
 export default function Imgslide() {
-  const slides = [
-    {
-      img: "/an phuu.jpg",
-      title: 'Vị trí "kim cương" An Phú',
-      desc: 'Kết nối hoàn hảo…',
-    },
-    {
-      img: "/an phuoke.jpg",
-      title: 'Khu đô thị ven sông',
-      desc: 'Thiết kế thông minh, sống xanh mỗi ngày.',
-    },
-    {
-      img: "/masterise.webp",
-      title: 'Tâm điểm Ocean Park',
-      desc: 'Sống giữa nhịp đập đại đô thị xanh.',
-    }
-  ]
-
   return (
-    <section className="w-full h-screen overflow-hidden relative cursor-grab">
+    <section className="w-full h-screen overflow-hidden relative">
       <Swiper
         modules={[Pagination]}
         pagination={{
@@ -39,62 +38,49 @@ export default function Imgslide() {
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
-            <SlideItem img={slide.img} title={slide.title} desc={slide.desc} uniqueKey={i} />
+            <SlideItem slide={slide} />
           </SwiperSlide>
         ))}
       </Swiper>
-
     </section>
   )
 }
 
-function SlideItem({ img, title, desc, uniqueKey }) {
-  const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start center', 'end center']
-  })
-
-  const imageX = useMotionValue('50%')
-  const textX = useMotionValue('-30%')
-  const textOpacity = useMotionValue(0)
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (v) => {
- if (v >= 0.4) {
-  setTimeout(() => {
-    imageX.set('9%')
-    textX.set('0%')
-    textOpacity.set(1)
-  }, 200) // delay 200ms
-}
-
-    })
-    return () => unsubscribe()
-  }, [uniqueKey]) // khi slide đổi → re-run
+function SlideItem({ slide }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.4 })
 
   return (
-    <div ref={sectionRef} className="relative w-full h-screen overflow-hidden">
-   <motion.img
-  src={img}
-  style={{ x: imageX }}
-  className="absolute top-0 left-0 w-full h-full object-cover"
-  transition={{ type: 'spring', stiffness: 40, damping: 15 }} // 👈 chuyển động mượt
-/>
+    <div ref={ref} className="relative w-full h-screen bg-white overflow-hidden">
+      <motion.img
+        src={slide.img}
+        initial={{ x: '100%' }}
+        animate={inView ? { x: '0%' } : {}}
+        transition={{ duration: 0.8 }}
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      />
 
-
-      {/* Optional: overlay mờ ảnh */}
-      <div className="absolute inset-0 z-10" />
-
-      <motion.div
-        style={{ x: textX, opacity: textOpacity }}
-        className="absolute bottom-20 left-[50px] xl:left-[160px] z-20"
-      >
-        <h2 className="text-3xl font-semibold text-white xl:text-5xl">{title}</h2>
-        <p className="text-white mt-1 max-w-md xl:text-2xl">{desc}</p>
-      </motion.div>
+      <div className="absolute bottom-10 left-6 text-white z-10 max-w-[80%]">
+        <motion.h2
+          initial={{ x: '-50%', opacity: 0 }}
+          animate={inView ? { x: 0, opacity: 1 } : {}}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="text-3xl font-semibold"
+        >
+          {slide.title}
+        </motion.h2>
+        <motion.p
+          initial={{ x: '50%', opacity: 0 }}
+          animate={inView ? { x: 0, opacity: 1 } : {}}
+          transition={{ delay: 1.5, duration: 0.8 }}
+          className="mt-2 text-lg"
+        >
+          {slide.desc}
+        </motion.p>
+      </div>
     </div>
   )
 }
+
 
 
