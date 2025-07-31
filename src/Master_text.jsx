@@ -56,11 +56,11 @@ export default function Masterise_text() {
 
           {/* Mobile: hiện text sau khi heading ẩn */}
           {!showHeading && (
-            <div className="space-y-3 animate-fade-in xl:hidden">
-              <p className="text-sm mt-2 xl:text-[17px] leading-relaxed">
-                Masterise Homes®, trực thuộc tập đoàn Masterise, là nhà phát triển bất động sản hàng hiệu đẳng cấp quốc tế...
+            <div className="space-y-3 animate-fade-in xl:hidden md:max-w-[350px]">
+              <p className="text-sm mt-2 xl:text-[17px] leading-relaxed md:text-2xl">
+                Masterise Homes®, trực thuộc tập đoàn Masterise, là nhà phát triển bất động sản hàng hiệu đẳng cấp quốc tế
               </p>
-              <p className="text-sm mt-2 xl:text-[17px] leading-relaxed">
+              <p className="text-sm mt-2 xl:text-[17px] leading-relaxed md:text-sm">
                 Kết hợp tinh hoa quốc tế với chiều sâu văn hóa bản địa, chúng tôi kiến tạo trải nghiệm sống xứng tầm, nuôi dưỡng khát vọng và xây dựng di sản bền vững.
               </p>
             </div>

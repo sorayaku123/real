@@ -127,7 +127,7 @@ export default function Tab() {
   };
 
   return (
-    <section className="w-full px-4 py-8">
+    <section className="max-w-full px-4 py-8">
       {/* Main Tabs */}
       <div className="flex space-x-4 mb-4 text-[#52ccbe]">
         {data.map((d, i) => (
@@ -172,11 +172,11 @@ export default function Tab() {
         className="!px-0"
       >
         {currentSlides.map((s, i) => (
-          <SwiperSlide key={i} className="!w-auto pb-5 flex flex-col items-center transition-colors duration-300">
+          <SwiperSlide key={i} className="!w-auto pb-5 transition-colors duration-300 md:duration-0 pb-16">
             {({ isActive }) => (
               <div
-                className={`transition-all duration-300 pt-2 ${
-                  isActive ? '' : 'mt-10'
+                className={`transition-all duration-300 pt-2 md:duration-0 ${
+                  isActive ? '' : 'mt-10 md:mt-0 w-[400px]'
                 }`}
               >
                 <div className="rounded-xl shadow-lg overflow-hidden">

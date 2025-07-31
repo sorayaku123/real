@@ -31,12 +31,14 @@ useEffect(() => {
 
   return (
     <main>
-    <motion.header
+   <motion.header
   initial={{ y: -100 }}
-  animate={{ y: isOpen ? 0 : (showHeader ? 0 : -100) }}
+  animate={{ y: isOpen || showHeader ? 0 : -100 }} // 🛠 sửa chỗ này
   transition={{ duration: 0.3 }}
   className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md border-b border-white/10"
 >
+
+
 
         <div className="flex justify-between items-center px-4 xl:px-16 xl:pt-4 pb-2 h-16">
           <img src="/logo.png" className="object-cover w-20 xl:w-22" />
@@ -44,7 +46,7 @@ useEffect(() => {
 
           {/* Mobile Button */}
           <button
-            className="z-50 w-10 h-10 relative pt-[50px] xl:hidden"
+            className="w-10 h-10 relative mt-[25px] xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span className={`absolute top-[8px] left-1/2 w-[24px] h-[2px] bg-sky-200 transition-all duration-300 origin-center ${isOpen ? 'rotate-45 -translate-x-1/2 translate-y-[8px]' : '-translate-x-1/2'}`} />
@@ -86,9 +88,9 @@ useEffect(() => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="fixed top-0 right-0 h-full w-72 bg-gray-700 text-white p-6 shadow-lg space-y-4 opacity-[.95] xl:hidden z-40"
+            className="fixed top-[63px] right-0 h-full w-72 bg-gray-700 text-white p-6 shadow-lg space-y-4 opacity-[.95] xl:hidden z-40"
           >
-            <h1 className="text-2xl font-bold mb-6 mt-8">Menu</h1>
+            <h1 className="text-2xl font-bold mb-6 mt-20">Menu</h1>
             <div className="space-y-6">
               <div>
                 <p className="font-bold">About</p>
