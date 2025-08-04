@@ -127,7 +127,7 @@ export default function Tab() {
   };
 
   return (
-    <section className="max-w-full px-4 py-8">
+    <section className="okela max-w-full px-4 py-8">
       {/* Main Tabs */}
       <div className="flex space-x-4 mb-4 text-[#52ccbe]">
         {data.map((d, i) => (
@@ -160,42 +160,48 @@ export default function Tab() {
         ))}
       </div>
 
-      <Swiper
-        spaceBetween={0}
-        slidesPerView="auto"
-        centeredSlides
-        grabCursor
-        pagination={{ clickable: true }}
-        modules={[Pagination]}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={handleSlideChange}
-        className="!px-0"
-      >
-        {currentSlides.map((s, i) => (
-          <SwiperSlide key={i} className="!w-auto pb-5 transition-colors duration-300 md:duration-0 pb-16">
-            {({ isActive }) => (
-              <div
-                className={`transition-all duration-300 pt-2 md:duration-0 ${
-                  isActive ? '' : 'mt-10 md:mt-0 w-[400px]'
-                }`}
-              >
-                <div className="rounded-xl shadow-lg overflow-hidden">
-                  <img
-                    src={`/${s.img.img}`}
-                    alt=""
-                    className="w-full h-[300px] object-contain"
-                  />
-                </div>
-                <div className="mt-2 text-center">
-                <p className="text-sm uppercase text-pink-400 font-semibold">
-                  {s.img.desc}
-                </p>
-                </div>
-              </div>
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+<Swiper
+  slidesPerView={1.3}
+  centeredSlides
+  spaceBetween={20}
+  pagination={{ clickable: true }}
+  modules={[Pagination]}
+  onSwiper={(swiper) => (swiperRef.current = swiper)}
+  onSlideChange={handleSlideChange}
+  className="px-0 overflow-visible" // bắt buộc giữ overflow-visible để show ảnh trái/phải
+>
+  {currentSlides.map((s, i) => (
+    <SwiperSlide key={i} className="">
+      {({ isActive }) => (
+        <div
+          className={`
+            relative transition-all duration-300 
+            ${isActive ? 'z-30 scale-100' : 'z-10 scale-90 opacity-60'}
+          `}
+        >
+          <div className="w-[290px] md:w-[320px] justify-self-center">
+            <img
+              src={`/${s.img.img}`}
+              alt=""
+              className="max-w-full object-contain"
+            />
+          </div>
+          <p className="mt-3 text-center text-sm text-pink-400 font-semibold uppercase px-2">
+            {s.img.desc}
+          </p>
+        </div>
+      )}
+    </SwiperSlide>
+  ))}
+</Swiper>
+
+
+
+
+
+
+
+
     </section>
   );
 }

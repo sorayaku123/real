@@ -35,7 +35,7 @@ useEffect(() => {
   initial={{ y: -100 }}
   animate={{ y: isOpen || showHeader ? 0 : -100 }} // 🛠 sửa chỗ này
   transition={{ duration: 0.3 }}
-  className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md border-b border-white/10"
+  className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md border-b border-white/10 md:px-10 pt-5"
 >
 
 
@@ -46,7 +46,7 @@ useEffect(() => {
 
           {/* Mobile Button */}
           <button
-            className="w-10 h-10 relative mt-[25px] xl:hidden"
+            className="w-10 h-10 relative mt-[15px] xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span className={`absolute top-[8px] left-1/2 w-[24px] h-[2px] bg-sky-200 transition-all duration-300 origin-center ${isOpen ? 'rotate-45 -translate-x-1/2 translate-y-[8px]' : '-translate-x-1/2'}`} />
