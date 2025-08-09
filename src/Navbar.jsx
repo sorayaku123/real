@@ -29,6 +29,41 @@ useEffect(() => {
 
 
 
+const parentVariants = {
+  hidden: {
+    x: 300,
+  },
+  show: {
+    x: 0,
+    transition: {
+      type: "tween",
+      duration: 0.4,
+      ease: "easeInOut",
+      when: "beforeChildren", // ⬅️ đảm bảo parent chạy xong mới tới chữ
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+
+const itemVariants = {
+  hidden: { opacity: 0, x: 40 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,     // mượt hơn
+      ease: [0.25, 0.8, 0.25, 1], // easing tự nhiên hơn
+    },
+  },
+}
+
+
+
+
+
+
   return (
     <main>
    <motion.header
@@ -46,7 +81,7 @@ useEffect(() => {
 
           {/* Mobile Button */}
           <button
-            className="w-10 h-10 relative mt-[15px] xl:hidden"
+            className="w-10 h-10 relative mt-[15px] md:mr-5 xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span className={`absolute top-[8px] left-1/2 w-[24px] h-[2px] bg-sky-200 transition-all duration-300 origin-center ${isOpen ? 'rotate-45 -translate-x-1/2 translate-y-[8px]' : '-translate-x-1/2'}`} />
@@ -83,37 +118,56 @@ useEffect(() => {
       {/* Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="fixed top-[63px] right-0 h-full w-72 bg-gray-700 text-white p-6 shadow-lg space-y-4 opacity-[.95] xl:hidden z-40"
-          >
-            <h1 className="text-2xl font-bold mb-6 mt-20">Menu</h1>
-            <div className="space-y-6">
-              <div>
-                <p className="font-bold">About</p>
-                <ul className="pl-3 pt-2 text-sm text-gray-300 space-y-1">
-                  <li>History</li>
-                  <li>Vision</li>
-                  <li>Leadership</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-bold">Residences</p>
-                <ul className="pl-3 pt-2 text-sm text-gray-300 space-y-1">
-                  <li>Floor Plans</li>
-                  <li>Amenities</li>
-                  <li>Gallery</li>
-                </ul>
-              </div>
-              <a className="block font-bold">Location</a>
-              <a className="block font-bold">Contact</a>
-            </div>
-          </motion.div>
+          
+
+          
+
+<motion.div
+  initial="hidden"
+  animate="show"
+  exit="hidden"
+  variants={parentVariants}
+  className="fixed top-[63px] right-[0px] h-full w-72 bg-gray-700 text-white p-6 shadow-lg space-y-4 opacity-[.95] xl:hidden z-40"
+>
+  <motion.h1 variants={itemVariants} className="text-2xl font-bold mb-6 mt-20">
+    Menu
+  </motion.h1>
+
+  <div className="space-y-6">
+    <motion.div variants={itemVariants}>
+      <p className="font-bold">About</p>
+      <motion.ul
+        variants={parentVariants}
+        className="pt-2 text-sm text-gray-300 space-y-1"
+      >
+        {["History", "Vision", "Leadership"].map((item, i) => (
+          <motion.li key={i} variants={itemVariants}>{item}</motion.li>
+        ))}
+      </motion.ul>
+    </motion.div>
+
+    <motion.div variants={itemVariants}>
+      <p className="font-bold">Residences</p>
+      <motion.ul
+        variants={parentVariants}
+        className="pt-2 text-sm text-gray-300 space-y-1"
+      >
+        {["Floor Plans", "Amenities", "Gallery"].map((item, i) => (
+          <motion.li key={i} variants={itemVariants}>{item}</motion.li>
+        ))}
+      </motion.ul>
+    </motion.div>
+
+    <motion.a variants={itemVariants} className="block font-bold">Location</motion.a>
+    <motion.a variants={itemVariants} className="block font-bold">Contact</motion.a>
+  </div>
+</motion.div>
+
+
+
         )}
       </AnimatePresence>
     </main>
   )
 }
+

@@ -6,7 +6,7 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
       {!reverse && (
         <motion.img
           src={imgSrc}
-          className="max-w-full min-h-[300px] md:h-[300px] xl:h-[500px]"
+          className="max-w-full min-h-[300px] md:object-left h-[300px] w-full xl:h-[500px]"
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeInOut" }}
@@ -29,12 +29,12 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
    style={{ fontFamily: 'Monaco'}}
 >
 
-                      <h1 className="text-[23px] mb-2 text-amber-400 uppercase font-bold xl:pt-4">{title}</h1>
-                   <span className="text-[23px] text-amber-400 uppercase font-semibold block mb-2">{subtitle}</span>
+                      <h1 className="text-[23px] mb-2 text-amber-200 uppercase font-bold xl:pt-4 xl:text-4xl md:text-sm">{title}</h1>
+                   <span className="text-[23px] text-amber-400 uppercase font-semibold block mb-2 xl:text-4xl italic">{subtitle}</span>
         </div>
 
         {paragraphs.map((text, i) => (
-          <p key={i} className="mt-2 text-sm pb-2">{text}</p>
+          <p key={i} className="mt-2 text-sm pb-2 md:text-sm md:font-myfont2">{text}</p>
         ))}
 
 <img
@@ -56,7 +56,7 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
         <div className="w-full">
            <motion.img
           src={imgSrc}
-           className="max-w-full md:h-[300px] xl:h-[500px] w-full"
+           className="max-w-full md:h-[300px] object-top xl:h-[500px] w-full"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: "easeInOut" }}

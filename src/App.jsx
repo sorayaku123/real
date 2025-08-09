@@ -176,7 +176,7 @@ const { ref, inView } = useInView({
 
     <div className="relative">
         <Navbar onSidebarToggle={setIsOpen} />
-<main className={`transition-transform duration-600 ease-out ${isOpen ? 'translate-x-[-200px]' : ''}`}>
+<main className={`transition-transform duration-500 ease-out ${isOpen ? 'translate-x-[-200px]' : ''}`}>
 
 
 

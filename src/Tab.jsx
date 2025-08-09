@@ -68,7 +68,6 @@ const data = [
         {
         sub: '3 Phòng Ngủ',
         public: [
-          { img: '3pn1.jpg'},
           { img: '3pn2.jpg'},
           { img: '3pn3.jpg'},
           { img: '3pn4.jpg'},
@@ -83,6 +82,11 @@ export default function Tab() {
   const [activeMain, setActiveMain] = useState(0);
   const [activeSub, setActiveSub] = useState(0);
   const swiperRef = useRef(null);
+
+
+
+  const isNoiThat = data[activeMain].main === 'NỘI THẤT';
+
 
   const currentSlides = useMemo(() => {
     return data[activeMain].subs.flatMap((s) =>
@@ -122,14 +126,14 @@ export default function Tab() {
   };
 
   const handleSubTabClick = (i) => {
-    const index = subStartIndexes[i];
+    const index = subStartIndexes[i]; 
     swiperRef.current?.slideTo(index);
   };
 
   return (
-    <section className="okela max-w-full px-4 py-8">
+    <section className="okela">
       {/* Main Tabs */}
-      <div className="flex space-x-4 mb-4 text-[#52ccbe]">
+      <div className="flex justify-center mb-2 text-[#52ccbe] xl:text-xl">
         {data.map((d, i) => (
           <button
             key={i}
@@ -146,12 +150,12 @@ export default function Tab() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="space-x-2 mb-4 text-black text-lg">
+      <div className="flex flex-wrap justify-center mb-4 text-black text-lg">
         {data[activeMain].subs.map((s, i) => (
           <button
             key={i}
             onClick={() => handleSubTabClick(i)}
-            className={`px-3 py-1 ${
+            className={`px-3 ${isNoiThat ? 'py-1' : ''} ${
               i === activeSub ? 'font-bold text-sky-500' : ''
             }`}
           >
@@ -163,32 +167,39 @@ export default function Tab() {
 <Swiper
   slidesPerView={1.3}
   centeredSlides
-  spaceBetween={20}
+  grabCursor={true}
+  spaceBetween={-13}
   pagination={{ clickable: true }}
   modules={[Pagination]}
   onSwiper={(swiper) => (swiperRef.current = swiper)}
   onSlideChange={handleSlideChange}
-  className="px-0 overflow-visible" // bắt buộc giữ overflow-visible để show ảnh trái/phải
+    observer={true}
+  observeParents={true}
+
+  className="okela px-0 overflow-visible xl:w-[1100px]" // bắt buộc giữ overflow-visible để show ảnh trái/phải
 >
   {currentSlides.map((s, i) => (
     <SwiperSlide key={i} className="">
       {({ isActive }) => (
         <div
           className={`
-            relative transition-all duration-300 
-            ${isActive ? 'z-30 scale-100' : 'z-10 scale-90 opacity-60'}
+            relative transition-all duration-300  flex flex-col items-center justify-center 
+            ${isActive ? 'scale-100' : 'z-10 scale-90'}
           `}
         >
-          <div className="w-[290px] md:w-[320px] justify-self-center">
+
+            
+<div className="">
             <img
               src={`/${s.img.img}`}
               alt=""
-              className="max-w-full object-contain"
+              className="object-contain rounded-lg"
             />
           </div>
-          <p className="mt-3 text-center text-sm text-pink-400 font-semibold uppercase px-2">
-            {s.img.desc}
-          </p>
+        <p className={`text-sm text-sky-300 uppercase px-2 mb-2 mt-2 md:font-bold text-sm ${s.img.desc ? '' : 'invisible'} `}>
+ {s.img.desc || 'placeholder'}
+</p>
+
         </div>
       )}
     </SwiperSlide>

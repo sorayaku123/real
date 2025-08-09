@@ -5,23 +5,28 @@ import 'swiper/css/pagination'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
+
 const slides = [
   {
     img: "/an phuu.jpg",
     title: 'Vị trí "kim cương" An Phú',
     desc: 'Kết nối hoàn hảo…',
+    overlay: true // thêm flag
   },
   {
     img: "/an phuoke.jpg",
     title: 'Khu đô thị ven sông',
     desc: 'Thiết kế thông minh, sống xanh mỗi ngày.',
+    overlay: false
   },
   {
     img: "/masterise.webp",
     title: 'Tâm điểm Ocean Park',
     desc: 'Sống giữa nhịp đập đại đô thị xanh.',
+    overlay: true
   }
 ]
+
 
 export default function Imgslide() {
   return (
@@ -46,12 +51,14 @@ export default function Imgslide() {
   )
 }
 
+
 function SlideItem({ slide }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.4 })
 
+
   return (
-    <div ref={ref} className="relative w-full h-screen bg-white overflow-hidden">
+    <div ref={ref} className="relative w-full h-screen bg-white overflow-hidden cursor-grab">
       <motion.img
         src={slide.img}
         initial={{ x: '100%' }}
@@ -60,7 +67,15 @@ function SlideItem({ slide }) {
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
 
-      <div className="absolute bottom-10 left-6 text-white z-10 max-w-[80%]">
+
+      {/* overlay trắng bên trái cho ảnh cần */}
+      {slide.overlay && (
+        <div className="absolute top-0 left-0 h-full bg-white"
+             style={{ width: '10%' }} />
+      )}
+
+
+      <div className="absolute bottom-10 right-6 text-white z-10 max-w-[60%] text-right">
         <motion.h2
           initial={{ x: '-50%', opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : {}}
@@ -81,6 +96,4 @@ function SlideItem({ slide }) {
     </div>
   )
 }
-
-
 
