@@ -327,7 +327,7 @@ const { ref, inView } = useInView({
 
 <div> 
  {/* ĐANG TRIỂN KHAI */}
-  <motion.h1 className="text-xl font-bold text-[#ba7c38] uppercase mb-6"  
+  <motion.h1 className="text-3xl font-bold text-[#ba7c38] uppercase mb-6"  
     variants={headingVariant}
     initial="hidden"
     whileInView="visible"
@@ -360,10 +360,10 @@ const { ref, inView } = useInView({
 
   </div>
 </div>
-     <div className="border-b-2 border-[#ba7c38] mt-10 xl:border-[2px]"> </div>
+     <div className="border-b-2 border-[#ba7c38] mt-10 xl:border-[2px] mb-6"> </div>
 <div>
   {/* ĐÃ TRIỂN KHAI */}
-  <motion.h1 className="text-3xl font-bold text-[#ba7c38] uppercase my-5"
+  <motion.h1 className="text-3xl font-bold text-[#ba7c38] uppercase mb-6"
     variants={headingVariant}
     initial="hidden"
     whileInView="visible"
@@ -486,10 +486,10 @@ const { ref, inView } = useInView({
   <ContactForm />
 </nav>
 
-<footer className="bg-[#b67e3c] flex flex-col items-center">
-  <article className="relative inline-block pt-10">
+<footer className="bg-[#b67e3c] flex flex-col items-center text-white ">
+  <article className="pt-10 flex items-start">
       <h1> Master Home</h1>
-      <span className="absolute top-[40px] right-[-10px] text-white font-bold text-xs"> ® </span>
+      <span className="ont-bold text-xs"> ® </span>
   </article>
   <div>
     <h1> trụ sở chính - hồ chí minh </h1>

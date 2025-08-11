@@ -6,25 +6,9 @@ img{
     object-fit: cover;
 }
 
-footer h1{
-    @apply text-white font-bold text-xl capitalize
-}
-
-footer div{
-    @apply py-2 text-center max-w-[360px] 
-}
-
-footer p{
-    @apply text-white text-sm pt-1.5
-}
-
 .desktop a{
     display: block;
     cursor: pointer;
-}
-
-.contact h1{
-    @apply text-base font-bold mt-1
 }
 
 html {

@@ -4,7 +4,7 @@
 
 export default function ContactForm() {
   return (
-    <section className="bg-white text-gray-800 py-10 px-4 xl:px-20">
+    <section className="bg-white text-gray-800 py-10 px-4 xl:px-20 xl:text-lg">
       <h2 className="text-3xl font-bold text-center text-yellow-600 mb-10 uppercase">
         Liên hệ nhận thông tin
       </h2>
@@ -53,6 +53,7 @@ export default function ContactForm() {
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"
+          duration="2000"
           referrerPolicy="no-referrer-when-downgrade"
           className="rounded-md w-full"
         ></iframe>

@@ -7,7 +7,7 @@ export default function ProjectCard({ image, title, desc, location, url}) {
 >
       <img src={image} className="w-full md:h-[250px]" />
       <h2 className="text-xl font-semibold mt-3 text-[#ba7c38]">{title}</h2>
-      <p className="mt-2">{desc}</p>
+      <p className="mt-2 line-clamp-2">{desc}</p>
       <div className="flex items-center gap-2 mt-2">
         <img src="/location.png" className="size-4" />
         <p className="uppercase text-[#ba7c38] text-sm">địa chỉ</p>
