@@ -486,59 +486,56 @@ const { ref, inView } = useInView({
   <ContactForm />
 </nav>
 
-<footer className="bg-[#b67e3c] flex flex-col items-center text-white ">
-  <article className="pt-10 flex items-start">
-      <h1> Master Home</h1>
-      <span className="ont-bold text-xs"> ® </span>
-  </article>
-  <div>
-    <h1> trụ sở chính - hồ chí minh </h1>
-    <p> TMDV số 19-23, Masteri An Phú, 179 Xa Lộ Hà Nội, Phường Thảo Điền, Thành phố Thủ Đức </p>
-  </div>
-    <div>
-    <h1> văn phòng hà nội  </h1>
-    <p> Tầng 1, Tòa nhà T26, Times City, 458 Minh Khai, Quận Hai Bà Trưng, Hà Nội </p>
-  </div>
-
-     <div>
-    <h1> kết nối với chúng tôi </h1>
-    <div className="flex items-center gap-3 justify-center">
-      <div className="w-7 h-7 rounded-full border-white-400 border-2 flex items-center justify-center">
-             <img src="/facebook.svg" className="w-2.5"/>
-      </div>
-         <div className="w-7 h-7 rounded-full border-white-400 border-2 flex items-center justify-center">
-               <img src="/linked.svg" className="w-2.5"/>
-      </div>
-      <div className="w-7 h-7 rounded-full border-white-400 border-2 flex items-center justify-center">
-                   <img src="/yt.svg" className="w-2.5"/>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<div className="bg-sky-300 flex flex-col items-center text-center text-sm font-semibold text-gray-700 py-10">
-  <div className="max-w-80 flex flex-col items-center">
+<article className="bg-sky-300 flex flex-col items-center text-white text-sm py-5">
+ <div className="max-w-80 flex flex-col items-center">
       <article className="relative">
       <h1 className="text-xl font-bold"> Master Home</h1>
-      <span className="absolute top-[0px] right-[-10px] text-xs font-semibold"> ® </span>
-  </article>
-  <div>
+      <span className="absolute top-[3px] right-[-10px] text-xs font-semibold"> ® </span>
+       </article>
+  </div>
+  <section className="text-center">
     <h1> A MEMBER OF MASTERISE GROUP</h1>
     <p> Website thuộc sở hữu bởi: CÔNG TY CỔ PHẦN TẬP ĐOÀN MASTERISE </p>
     <p> GCNĐKDN số 0304840018 do Phòng ĐKKD Thành phố Hồ Chí Minh cấp, đăng ký lần thứ 18 ngày 12/05/2020</p>
     <p>Bản quyền ©2019 thuộc về Công ty Cổ phần Tập đoàn Masterise</p>
-  </div>
-  <h1 className="font-bold uppercase mt-4 xl: mt-6"> chính sách bảo mật </h1>
-  <img src="/pro.png"/>
-  </div>
-</div>
+
+  <h1 className="font-bold uppercase mt-4 mb-2 xl:mt-6"> chính sách bảo mật </h1>
+  <img src="/pro.png" className="justify-self-center"/>
+
+  </section>
+
+
+</article>
 
 
 
+<footer className="bg-[#b67e3c] text-[12px] text-white pt-4 pb-10 px-3">
+   <p className="text-center">
+    sales@masterisehomes.com
+   </p>
+   <p className="text-center"> 
+    (+84) 28 39 159 159                                 
+   </p>
+  <h2 className="text-lg uppercase text-center mb-4"> kết nối </h2>
+  <section className="flex justify-center space-x-3 mb-4">
+    <div className="text-center rounded-full border-white border-2 inline-block p-2">
+    <img src="/facebook.svg" className="size-5 object-contain"/>
+    </div>
+        <div className="text-center rounded-full border-white border-2 inline-block p-2">
+     <img src="/linked.svg"  className="w-5 h-5"/>
+     </div>
+         <div className="text-center rounded-full border-white border-2 inline-block p-2">
+      <img src="/yt.svg"  className="size-5"/>
+      </div>
+  </section>
 
-
-
-
+  <p className="mb-5">
+    Các thông tin về dự án Masteri Trinity Square tại trang này là sản phẩm và thuộc quyền sở hữu của Công ty TNHH Đầu tư và Phát triển Bất động sản Trường Minh, GCNĐKDN số 0901125981, chủ đầu tư Dự án và được công khai tại đây theo thỏa thuận giữa Công ty Cổ phần Tập đoàn Masterise và Công ty TNHH Đầu tư và Phát triển Bất động sản Trường Minh.
+  </p>
+  <p>
+    Lưu ý: Chúng tôi đã nỗ lực và cẩn trọng để hoàn thiện tài liệu này, tuy nhiên tài liệu chỉ dùng với mục đích tham khảo. Hình ảnh, sơ đồ kỹ thuật, bố trí nội ngoại thất hay thông tin mô tả chỉ nhằm mục đích minh họa, không phải là thông tin hiện thực hay cam kết pháp lý. Thông tin chính thức về dự án, sản phẩm (bao gồm nhưng không giới hạn: tên tòa, phân khu, thông tin căn hộ, ký hiệu căn hộ, diện tích, tiện ích,...) sẽ được căn cứ trên hợp đồng mua bán và các tài liệu được thỏa thuận, ký kết chính thức với khách hàng.
+  </p>
+</footer>
 
       </main>
     </div>
