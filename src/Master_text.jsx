@@ -17,7 +17,7 @@ useEffect(() => {
       // Delay bật showTextDesktop sau khi heading hiện xong (ví dụ 2.5s)
       setTimeout(() => {
         setShowTextDesktop(true);
-      }, 2500);
+      }, 4500);
     } else {
       setShowHeading(true);
       setShowTextDesktop(false);

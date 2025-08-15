@@ -24,5 +24,8 @@ html {
   background-color: #53ce58 !important; /* Màu xanh Cala */
 }
 
+.no-scroll {
+  overflow: hidden;
+}
 
 

@@ -34,7 +34,7 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
         </div>
 
         {paragraphs.map((text, i) => (
-          <p key={i} className="mt-2 text-sm pb-2 md:text-sm md:font-myfont2">{text}</p>
+          <p key={i} className="mt-2 text-sm pb-2 md:text-sm md:font-myfont2 xl:text-md">{text}</p>
         ))}
 
 <img

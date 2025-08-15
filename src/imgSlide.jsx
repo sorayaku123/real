@@ -80,7 +80,7 @@ function SlideItem({ slide }) {
           initial={{ x: '-50%', opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : {}}
           transition={{ delay: 1, duration: 0.8 }}
-          className="text-3xl font-semibold"
+          className="text-3xl font-semibold xl:text-4xl"
         >
           {slide.title}
         </motion.h2>
@@ -88,7 +88,7 @@ function SlideItem({ slide }) {
           initial={{ x: '50%', opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : {}}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="mt-2 text-lg"
+          className="mt-2 text-lg xl:text-xl"
         >
           {slide.desc}
         </motion.p>

@@ -150,12 +150,12 @@ export default function Tab() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex flex-wrap justify-center mb-4 text-black text-lg">
+      <div className="flex flex-wrap justify-center mb-4 text-black text-lg xl:text-xl">
         {data[activeMain].subs.map((s, i) => (
           <button
             key={i}
             onClick={() => handleSubTabClick(i)}
-            className={`px-3 ${isNoiThat ? 'py-1' : ''} ${
+            className={`px-3  ${isNoiThat ? 'py-1' : ''} ${
               i === activeSub ? 'font-bold text-sky-500' : ''
             }`}
           >

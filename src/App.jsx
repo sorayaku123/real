@@ -313,7 +313,7 @@ const { ref, inView } = useInView({
 <motion.div
   initial={{ rotateX: -90, opacity: 0 }}
   whileInView={{ rotateX: 0, opacity: 1 }}
-  transition={{ duration: 1.2, ease: "easeOut" }}
+  transition={{ duration: 2, ease: "easeOut" }}
   viewport={{ once: true }}
   style={{ fontFamily: 'Times New Roman'}}
 >
@@ -486,7 +486,7 @@ const { ref, inView } = useInView({
   <ContactForm />
 </nav>
 
-<article className="bg-sky-300 flex flex-col items-center text-white text-sm py-5">
+<article className="bg-sky-300 flex flex-col items-center text-white text-sm py-5 xl:text-lg">
  <div className="max-w-80 flex flex-col items-center">
       <article className="relative">
       <h1 className="text-xl font-bold"> Master Home</h1>
@@ -509,7 +509,7 @@ const { ref, inView } = useInView({
 
 
 
-<footer className="bg-[#b67e3c] text-[12px] text-white pt-4 pb-10 px-3">
+<footer className="bg-[#b67e3c] text-[12px] text-white pt-4 pb-10 px-3 xl:text-[17px]">
    <p className="text-center">
     sales@masterisehomes.com
    </p>
