@@ -7,7 +7,6 @@ export default function Masterise_text() {
   const [showHeading, setShowHeading] = useState(true);
 
 
-  
 useEffect(() => {
   AOS.init({ once: true, duration: 1000 });
 
@@ -100,3 +99,5 @@ useEffect(() => {
     </article>
   );
 }
+
+

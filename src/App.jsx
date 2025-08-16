@@ -12,6 +12,7 @@ import Masterise_text from './Master_text'
 import { useInView } from "react-intersection-observer"
 import Tab from './Tab'
 
+
 export default function App() {
 
   const flipVariant = {
@@ -467,7 +468,7 @@ const { ref, inView } = useInView({
   <motion.div
     key={index}
     style={{ transformStyle: 'preserve-3d' }} // 👈 phải có
-    initial={{ rotateY: -90, opacity: 0 }}
+    initial={{ rotateY: -180, opacity: 0 }}
     whileInView={{ rotateY: 0, opacity: 1 }}
     transition={{ duration: 0.8, delay: index * 0.2 }}
     viewport={{ once: true, amount: 0.3 }}

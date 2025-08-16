@@ -35,5 +35,3 @@ export default function FeedbackCard({ image, name, role, feedback, size = 'w-64
 
 
 
-
-

@@ -12,9 +12,9 @@ export default function Navbar({ onSidebarToggle }) {
   // Gửi trạng thái sidebar cho App.jsx
   useEffect(() => {
     onSidebarToggle?.(isOpen)
-    document.body.style.overflow = isOpen ? 'hidden' : 'auto'
+    document.body.style.overflow = isOpen ? 'hidden' : 'block'
     return () => {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = 'block'
     }
   }, [isOpen, onSidebarToggle])
 
@@ -39,16 +39,17 @@ export default function Navbar({ onSidebarToggle }) {
       transition: {
         type: 'tween',
         duration: 0.35,
-        ease: 'easeInOut',
-        staggerChildren: 0.12
+        ease: 'easeOut',
+        staggerChildren: 0.5
       }
     }
   }
 
 
+
   const itemVariants = {
     hidden: { opacity: 0, x: 30 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.35 } }
+    show: { opacity: 1, x: 0, transition: { duration: 0.5 } }
   }
 
 
@@ -59,14 +60,14 @@ export default function Navbar({ onSidebarToggle }) {
         initial={{ y: -100 }}
         animate={{ y: isOpen || showHeader ? 0 : -100 }}
         transition={{ duration: 1 }}
-        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md border-b border-white/10 md:px-10 pt-5"
+        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md border-b border-white/10 flex justify-between items-center md:px-10 pt-5 "
       >
-        <div className="flex justify-between items-center px-4 xl:px-16 xl:pt-4 pb-2 h-16">
+
           <img src="/logo.png" className="object-cover w-20 xl:w-22" />
 
 
           <button
-  className="w-10 h-10 relative mt-[15px] md:mr-5 xl:hidden"
+  className="relative w-10 h-10 right-20 mt-[15px] md:mr-5 xl:hidden"
   onClick={() => setIsOpen(!isOpen)}
 >
   <span
@@ -86,12 +87,7 @@ export default function Navbar({ onSidebarToggle }) {
   />
 </button>
 
-
-
-
-
-
-          {/* Desktop Menu */}
+         {/* Desktop Menu */}
           <nav className="hidden xl:flex space-x-8 text-white">
             <div className="relative group">
               <motion.a whileHover={{ scale: 0.5 }} className="cursor-pointer">
@@ -118,8 +114,15 @@ export default function Navbar({ onSidebarToggle }) {
               Contact
             </a>
           </nav>
-        </div>
-      </motion.header>
+
+  </motion.header>
+
+
+
+
+ 
+
+
 
 
       {/* Mobile Sidebar + Backdrop */}
@@ -128,12 +131,6 @@ export default function Navbar({ onSidebarToggle }) {
           <>
             {/* Backdrop */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed z-30 xl:hidden"
             />
 
 
@@ -189,9 +186,4 @@ export default function Navbar({ onSidebarToggle }) {
     </main>
   )
 }
-
-
-
-
-
 

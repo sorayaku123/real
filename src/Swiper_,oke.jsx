@@ -11,6 +11,8 @@ const images = [
   '/img5.webp',
 ];
 
+
+
 export default function Collection() {
   return (
     <main className="xl:flex justify-center">

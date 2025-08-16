@@ -1,7 +1,7 @@
 // src/components/ProjectCard.jsx
 export default function ProjectCard({ image, title, desc, location, url}) {
   return (
-    <a className="block cursor-pointer shadow-lg p-2 bg-white xl:w-[423px]" href={url}
+    <a className="block cursor-pointer shadow-md p-2 xl:w-[423px]" href={url}
       target="_blank"
       rel="noopener noreferrer"
 >

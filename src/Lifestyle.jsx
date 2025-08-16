@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 
 export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBottom = "/img7.png", reverse = false }) {
+
   return (
     <div className="bg-amber-200 min-h-96 relative xl:flex gap-4 text-lg">
       {!reverse && (

@@ -4,6 +4,7 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+
 const data = [
   {
     main: 'TIỆN ÍCH',
@@ -130,6 +131,7 @@ export default function Tab() {
     swiperRef.current?.slideTo(index);
   };
 
+
   return (
     <section className="okela">
       {/* Main Tabs */}
@@ -138,7 +140,7 @@ export default function Tab() {
           <button
             key={i}
             onClick={() => handleMainTabClick(i)}
-            className={`px-4 py-2 rounded ${
+            className={`px-4 py-2 ${
               i === activeMain
                 ? 'underline decoration-sky-500 decoration-2 underline-offset-8 font-semibold'
                 : ''
@@ -155,7 +157,7 @@ export default function Tab() {
           <button
             key={i}
             onClick={() => handleSubTabClick(i)}
-            className={`px-3  ${isNoiThat ? 'py-1' : ''} ${
+            className={`px-3 ${isNoiThat ? 'py-1' : ''} ${
               i === activeSub ? 'font-bold text-sky-500' : ''
             }`}
           >
@@ -173,7 +175,7 @@ export default function Tab() {
   modules={[Pagination]}
   onSwiper={(swiper) => (swiperRef.current = swiper)}
   onSlideChange={handleSlideChange}
-    observer={true}
+  observer={true}
   observeParents={true}
 
   className="okela px-0 overflow-visible xl:w-[1100px]" // bắt buộc giữ overflow-visible để show ảnh trái/phải
