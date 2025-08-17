@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 export default function Masterise_text() {
   const [showTextDesktop, setShowTextDesktop] = useState(false);
   const [showHeading, setShowHeading] = useState(true);
@@ -42,7 +43,7 @@ useEffect(() => {
 
 
   return (
-    <article className="bg-[url(/masteri.jpeg)] bg-top bg-cover h-[520px] text-center space-y-3 xl:h-[720px] xl:bg-bottom">
+    <article className="bg-[url(/masteri.jpeg)] bg-top bg-cover h-[520px] text-center space-y-3 xl:h-[620px] xl:bg-bottom">
       {/* HEADING 3 dòng từ phải qua trái */}
         
         {/* HEADING 3 dòng từ phải qua trái */}
@@ -76,7 +77,7 @@ useEffect(() => {
     )}
     {/* Desktop: chỉ show text khi màn ≥1280 */}
 {showTextDesktop && (
-  <div className="xl:block space-y-3 animate-fade-in text-amber-100">
+  <div className="xl:block space-y-3 animate-fade-in text-amber-100 mt-40">
     <p className="text-[17px] leading-relaxed">
       Masterise Homes®, trực thuộc tập đoàn Masterise, là nhà phát triển bất động sản hàng hiệu đẳng cấp quốc tế...
     </p>

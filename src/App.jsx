@@ -11,6 +11,7 @@ import Imgslide from './imgSlide'
 import Masterise_text from './Master_text'
 import { useInView } from "react-intersection-observer"
 import Tab from './Tab'
+import Scroll from './Scroll'
 
 
 export default function App() {
@@ -176,6 +177,7 @@ const { ref, inView } = useInView({
   return (
 
     <div className="relative">
+     
         <Navbar onSidebarToggle={setIsOpen} />
 <main className={`transition-transform duration-500 ease-out ${isOpen ? 'translate-x-[-200px]' : ''}`}>
 
@@ -206,6 +208,7 @@ const { ref, inView } = useInView({
       </div>
 
       <Masterise_text />
+      <Scroll/>
 
 <section ref={ref} className="relative flex justify-center items-center h-96 overflow-hidden">
   <img
