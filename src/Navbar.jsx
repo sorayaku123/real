@@ -1,5 +1,4 @@
 
-
 import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -7,22 +6,40 @@ import { AnimatePresence, motion } from 'framer-motion'
 export default function Navbar({ onSidebarToggle }) {
   const [isOpen, setIsOpen] = useState(false)
   const [showHeader, setShowHeader] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
 
   // Gửi trạng thái sidebar cho App.jsx
   useEffect(() => {
     onSidebarToggle?.(isOpen)
-    document.body.style.overflow = isOpen ? 'hidden' : 'block'
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto'
     return () => {
-      document.body.style.overflow = 'block'
+      document.body.style.overflow = 'auto'
     }
   }, [isOpen, onSidebarToggle])
 
 
-  // Lắng nghe scroll chỉ khi cần
-  const handleScroll = useCallback(() => {
-    setShowHeader(window.scrollY > 1)
+  // Sau 1s thì header mới hiện ra
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHeader(true)
+    }, 1000)
+    return () => clearTimeout(timer)
   }, [])
+
+
+  // Lắng nghe scroll, check hướng
+  const handleScroll = useCallback(() => {
+    const currentY = window.scrollY
+    if (currentY > lastScrollY) {
+      // scroll xuống
+      setShowHeader(true)
+    } else {
+      // scroll lên
+      setShowHeader(false)
+    }
+    setLastScrollY(currentY)
+  }, [lastScrollY])
 
 
   useEffect(() => {
@@ -31,80 +48,70 @@ export default function Navbar({ onSidebarToggle }) {
   }, [handleScroll])
 
 
-  // Animation parent & item cho sidebar
-  const parentVariants = {
-    hidden: { x: 300 },
-    show: {
-      x: 0,
-      transition: {
-        type: 'tween',
-        duration: 0.35,
-        ease: 'easeOut',
-        staggerChildren: 0.5
-      }
-    }
-  }
-
-
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: 30 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-  }
-
+  // Animation parent & item cho sidebar 
+const parentVariants = { hidden: { x: 300 }, show: { x: 0, transition: { type: 'tween', duration: 0.35, ease: 'easeOut', staggerChildren: 0.5 } } } 
+const itemVariants = { hidden: { opacity: 0, x: 30 }, show: { opacity: 1, x: 0, transition: { duration: 0.5 } } }
 
   return (
     <main>
       {/* Header */}
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: isOpen || showHeader ? 0 : -100 }}
-        transition={{ duration: 1 }}
-        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md border-b border-white/10 flex justify-between items-center md:px-10 pt-5 "
-      >
-
-          <img src="/logo.png" className="object-cover w-20 xl:w-22" />
-
-
-          <button
-  className="relative w-10 h-10 right-20 mt-[15px] md:mr-5 xl:hidden"
-  onClick={() => setIsOpen(!isOpen)}
+  initial={{ y: -100 }}
+  animate={{ y: showHeader || isOpen ? 0 : -100 }}
+  transition={{ duration: 0.8 }}
+  className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md flex items-center md:px-10 pt-5"
 >
-  <span
-    className={`absolute top-[8px] left-[8px] w-[24px] h-[2px] bg-sky-200 transition-all duration-300 origin-center ${
-      isOpen ? 'rotate-45 translate-y-[8px]' : ''
-    }`}
-  />
-  <span
-    className={`absolute top-[16px] left-[8px] w-[24px] h-[2px] bg-sky-200 transition-opacity duration-300 ${
-      isOpen ? 'opacity-0' : 'opacity-100'
-    }`}
-  />
-  <span
-    className={`absolute top-[24px] left-[8px] w-[24px] h-[2px] bg-sky-200 transition-all duration-300 origin-center ${
-      isOpen ? '-rotate-45 -translate-y-[8px]' : ''
-    }`}
-  />
-</button>
+  <div className="flex items-center justify-between w-96 md:w-[680px] xl:w-full">
+    <img src="/logo.png" className="object-cover w-20 xl:w-22" />
 
-         {/* Desktop Menu */}
+    {/* Nút toggle mobile */}
+    <button
+      className="relative w-10 h-10 xl:hidden"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <span
+        className={`absolute left-1/2 top-[10px] w-7 h-[2px] bg-sky-200 transition-all duration-300 transform -translate-x-1/2
+          ${isOpen ? 'rotate-45 translate-y-[8px]' : ''}`}
+      />
+      <span
+        className={`absolute left-1/2 top-[18px] w-7 h-[2px] bg-sky-200 transition-all duration-300 transform -translate-x-1/2
+          ${isOpen ? 'opacity-0' : 'opacity-100'}`}
+      />
+      <span
+        className={`absolute left-1/2 top-[26px] w-7 h-[2px] bg-sky-200 transition-all duration-300 transform -translate-x-1/2
+          ${isOpen ? '-rotate-45 -translate-y-[8px]' : ''}`}
+      />
+    </button>
+  </div>
+
+
+
+ 
+
+
+        {/* Desktop menu ... giữ code cũ */}
+           {/* Desktop Menu */}
           <nav className="hidden xl:flex space-x-8 text-white">
-            <div className="relative group">
-              <motion.a whileHover={{ scale: 0.5 }} className="cursor-pointer">
+            <article className="relative group">
+              <motion.a whileHover={{ scale: 0.5 }} className="cursor-pointer hover:text-amber-300">
                 About
               </motion.a>
-              <div className="absolute left-0 bg-amber-50 text-base p-6 mt-5 space-y-2 rounded shadow-lg opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out pointer-events-none group-hover:pointer-events-auto border-sky-500">
-                <a className="text-amber-300 hover:text-amber-400 block">History</a>
-                <a className="text-amber-300 hover:text-amber-400 block">Vision</a>
-                <a className="text-amber-300 hover:text-amber-400 block">Leadership</a>
+              <div className="absolute left-0 bg-amber-50 text-base p-6 mt-5
+              space-y-2 rounded shadow-lg opacity-0 translate-y-12 group-hover:opacity-100
+              group-hover:translate-y-0 transition-all duration-500 ease-in-out group-hover:pointer-events-auto border-sky-500">
+                <a className="text-amber-300 hover:text-amber-400 block" href="https://masterisehomes.com">History</a>
+                <a className="text-amber-300 hover:text-amber-400 block "href="https://masterisehomes.com">Vision</a>
+                <a className="text-amber-300 hover:text-amber-400 block"href="https://masterisehomes.com">Leadership</a>
               </div>
-            </div>
+            </article>
             <div className="relative group">
-              <span className="cursor-pointer">Residences</span>
-              <div className="absolute left-0 bg-amber-50 text-base p-6 mt-5 space-y-2 rounded shadow-lg opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out pointer-events-none group-hover:pointer-events-auto border-sky-500">
-                <a className="text-amber-300 hover:text-amber-400 block">Floor</a>
-                <a className="text-amber-300 hover:text-amber-400 block">Plans</a>
-                <a className="text-amber-300 hover:text-amber-400 block">Gallery</a>
+              <span className="cursor-pointer hover:text-amber-300">Residences</span>
+              <div className="absolute left-0 bg-amber-50 text-base p-6 mt-5
+              space-y-2 rounded shadow-lg opacity-0 translate-y-12 group-hover:opacity-100
+              group-hover:translate-y-0 transition-all duration-500 ease-in-out group-hover:pointer-events-auto border-sky-500">
+                <a className="text-amber-300 hover:text-amber-400 block"href="https://masterisehomes.com">Floor</a>
+                <a className="text-amber-300 hover:text-amber-400 block"href="https://masterisehomes.com">Plans</a>
+                <a className="text-amber-300 hover:text-amber-400 block"href="https://masterisehomes.com">Gallery</a>
               </div>
             </div>
             <a href="#location" className="hover:text-amber-300">
@@ -114,13 +121,29 @@ export default function Navbar({ onSidebarToggle }) {
               Contact
             </a>
           </nav>
+      </motion.header>
 
-  </motion.header>
+
+
+
+
+
+
+
+     
+
+
+
+
 
 
 
 
  
+
+
+
+
 
 
 
@@ -134,17 +157,21 @@ export default function Navbar({ onSidebarToggle }) {
             />
 
 
+
+
             {/* Sidebar */}
             <motion.div
               initial="hidden"
               animate="show"
               exit="hidden"
               variants={parentVariants}
-              className="fixed top-[63px] right-0 h-full w-72 bg-gray-700 text-white p-6 shadow-lg space-y-4 opacity-[.95] xl:hidden z-40"
+              className="fixed top-[63px] right-0 h-full w-72 bg-gray-700 text-amber-200 p-6 space-y-4 opacity-[.95] z-10 xl:hidden"
             >
-              <motion.h1 variants={itemVariants} className="text-2xl font-bold mb-6 mt-20">
-                Menu
+              <motion.h1 variants={parentVariants} transition={5000} className="text-2xl font-bold mb-6 mt-20">
+                Masteri Home
               </motion.h1>
+
+
 
 
               <div className="space-y-6">
@@ -160,6 +187,8 @@ export default function Navbar({ onSidebarToggle }) {
                 </motion.div>
 
 
+
+
                 <motion.div variants={itemVariants}>
                   <p className="font-bold">Residences</p>
                   <motion.ul variants={parentVariants} className="pt-2 text-sm text-gray-300 space-y-1">
@@ -170,6 +199,8 @@ export default function Navbar({ onSidebarToggle }) {
                     ))}
                   </motion.ul>
                 </motion.div>
+
+
 
 
                 <motion.a variants={itemVariants} className="block font-bold">
@@ -186,4 +217,8 @@ export default function Navbar({ onSidebarToggle }) {
     </main>
   )
 }
+
+
+
+
 

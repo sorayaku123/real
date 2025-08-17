@@ -25,7 +25,7 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
       >
         <div
   className={`transition-all duration-300  ${
-    reverse ? 'md:text-right md:pr-4' : ''
+    reverse ? 'md:text-right pr-10' : ''
   }`}
    style={{ fontFamily: 'Monaco'}}
 >
@@ -38,14 +38,15 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
           <p key={i} className="mt-2 text-sm pb-2 md:text-sm md:font-myfont2 xl:text-md">{text}</p>
         ))}
 
+
 <img
   src={imgBottom}
   className={`absolute bottom-0 
     ${reverse 
       ? 'left-0 md:right-0 md:left-auto md:scale-x-[-1]' 
-      : 'right-0 md:left-0 md:right-auto md:scale-x-100'
+      : 'right-0 md:left-0 top-[172px] md:scale-x-100'
     } 
-    size-32 brightness-60 transition-all duration-150 
+    size-32 brightness-80 transition-all duration-150 
   `}
 />
 

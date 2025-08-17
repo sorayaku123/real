@@ -17,7 +17,7 @@ const slides = [
     img: "/an phuoke.jpg",
     title: 'Khu đô thị ven sông',
     desc: 'Thiết kế thông minh, sống xanh mỗi ngày.',
-    overlay: false
+    overlay: true
   },
   {
     img: "/masterise.webp",
@@ -30,7 +30,7 @@ const slides = [
 
 export default function Imgslide() {
   return (
-    <section className="w-full h-screen overflow-hidden relative">
+    <section>
       <Swiper
         modules={[Pagination]}
         pagination={{
@@ -39,7 +39,6 @@ export default function Imgslide() {
           bulletActiveClass: 'swiper-pagination-bullet-active custom-bullet-active',
         }}
         loop={true}
-        className="w-full h-full"
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
@@ -58,7 +57,7 @@ function SlideItem({ slide }) {
 
 
   return (
-    <div ref={ref} className="relative w-full h-screen bg-white overflow-hidden cursor-grab">
+    <div ref={ref} className="w-full h-screen cursor-grab">
       <motion.img
         src={slide.img}
         initial={{ x: '100%' }}

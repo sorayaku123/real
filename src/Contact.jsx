@@ -14,11 +14,11 @@ export default function ContactForm() {
 
 
 
-        {/* Form bên phải */}
+        {/* Form bên trái */}
         <form
           action="https://formsubmit.co/your@email.com"
           method="POST"
-          className="xl:w-2/3 w-full space-y-4"
+          className="xl:w-2/3 space-y-4"
         >
           <input type="text" name="name" required placeholder="Họ tên" className="w-full border px-4 py-2 rounded-md" />
           <input type="tel" name="phone" required placeholder="Số điện thoại" className="w-full border px-4 py-2 rounded-md" />
@@ -49,11 +49,10 @@ export default function ContactForm() {
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.424035422406!2d106.7008064!3d10.777232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1742a63bb9%3A0xe9ef67887f6b56e3!2sLandmark%2081!5e0!3m2!1sen!2s!4v1600000000000!5m2!1sen!2s"
           width="100%"
-          height="400"
-          style={{ border: 0 }}
+          height="300"
           allowFullScreen=""
           loading="lazy"
-          duration="2000"
+          duration="1200"
           referrerPolicy="no-referrer-when-downgrade"
           className="rounded-md w-full"
         ></iframe>

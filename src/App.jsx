@@ -179,19 +179,13 @@ const { ref, inView } = useInView({
         <Navbar onSidebarToggle={setIsOpen} />
 <main className={`transition-transform duration-500 ease-out ${isOpen ? 'translate-x-[-200px]' : ''}`}>
 
-
-
-
-
-    
-      
       <div className="relative h-[500px]">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          className="absolute w-full h-full object-cover"
         >
           <source src="/estate.mp4" />
         </video>
@@ -209,9 +203,6 @@ const { ref, inView } = useInView({
     Kiến tạo trải nghiệm xứng tầm
   </h1>
 </motion.div>
-
-
-
       </div>
 
       <Masterise_text />
@@ -220,20 +211,13 @@ const { ref, inView } = useInView({
   <img
     src="/du an.jpeg"
     className="absolute w-full h-full object-cover object-center"
-    alt="Dự Án"
   />
 
-
-  {/* Overlay tối mờ */}
-  <div className="absolute"></div>
-
-
-  {/* Motion text */}
   <motion.div
     initial={{ opacity: 0, scale: 0.95 }}
     animate={inView ? { opacity: 1, scale: 1 } : {}}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    className="relative z-10 text-center text-white px-4"
+    transition={{ duration: 1.8, ease: "easeOut" }}
+    className="text-center text-white px-4"
   >
     <h1 className="text-4xl xl:text-5xl font-bold uppercase drop-shadow-md mb-6">
       Dự Án
@@ -242,7 +226,7 @@ const { ref, inView } = useInView({
 
     <a
       href="#du_an"
-      className="inline-flex items-center gap-2 text-lg font-semibold text-sky-400 hover:text-sky-300 transition"
+      className="relative z-10 inline-flex items-center gap-2 text-lg font-semibold text-sky-400 hover:text-sky-300 transition"
     >
       Xem Thêm
       <img src="/arrow right.svg" alt="arrow" className="w-4 h-4" />
@@ -322,8 +306,7 @@ const { ref, inView } = useInView({
   <p className="text-3xl font-semibold text-[#ba7c38] uppercase xl:text-6xl ">masteri collection</p>
 </motion.div>
 
-  <div className="border-b-2 border-[#ba7c38] mt-4 bt-6 mb-6 xl:border-[2px]"> </div>
-
+  <div className="border-[1px] border-[#ba7c38] mt-4 mb-6 xl:border-[2px]"> </div>
 <div>
 
 <div> 
@@ -380,7 +363,7 @@ const { ref, inView } = useInView({
     key={i}
     initial={{ opacity: 0, x: 40 }}
     whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 1.2, delay: i * 0.1 }}
+    transition={{ duration: 1.2, delay: i * 0.1, ease: "easeOut" }}
     viewport={{ once: true, amount: 0.3 }}
     className={`
       ${(i === completedProjects.length - 1 && completedProjects.length % 3 !== 0)
@@ -421,7 +404,7 @@ const { ref, inView } = useInView({
     key={i}
     initial={{ opacity: 0, x: 40 }}
     whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 1.2, delay: i * 0.1 }}
+    transition={{ duration: 1.2, delay: i * 0.3, ease: "easeInOut" }}
     viewport={{ once: true, amount: 0.3 }}
   >
     <ProjectCard {...p} />
@@ -463,7 +446,7 @@ const { ref, inView } = useInView({
   </motion.div>
 
 
-  <div className="flex flex-wrap gap-6 pb-4 xl:flex justify-center">
+  <div className="space-y-3 pl-2 gap-6 pb-4 justify-start xl:flex justify-center">
   {feedbacks.map((fb, index) => (
   <motion.div
     key={index}
