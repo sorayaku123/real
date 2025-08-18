@@ -1,46 +1,37 @@
+/* --- GIỮ CÁI NÀY --- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-img{
-    object-fit: cover;
+img { object-fit: cover; }
+.desktop a{ display:block; cursor:pointer; }
+html{ scroll-behavior:smooth; }
+
+/* Pagination màu */
+.swiper-pagination-bullet{ background-color: gray !important; opacity:.7; }
+.swiper-pagination-bullet-active{ background-color:#53ce58 !important; opacity:1; }
+
+/* ===== SCOPED CHO SLIDER ẢNH HERO ===== */
+.hero-swiper{                 /* gán class này vào <Swiper> */
+  height: 500px;              /* CHIỀU CAO CỐ ĐỊNH CỦA SWIPER */
+  position: relative;
+  overflow: hidden;
+}
+.hero-swiper .swiper-wrapper,
+.hero-swiper .swiper-slide{ height:100%; }
+.hero-swiper .swiper-pagination{ bottom:12px !important; }
+
+/* Ảnh trong slide: fill đủ khung */
+.hero-swiper .swiper-slide img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
 }
 
-.desktop a{
-    display: block;
-    cursor: pointer;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-.swiper-pagination-bullet {
-  background-color: gray !important; /* Xám nhạt */
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #53ce58 !important; /* Màu xanh Cala */
-}
-
-
-
-.swiper-slide {
-  width: 100%;
-}
-
-
-
-
-
-.swiper-wrapper {
-  align-items: center;
-}
-.swiper-slide img {
-  max-width: 100%;
-  height: auto;
-}
+/* (QUAN TRỌNG) BỎ/ĐỪNG DÙNG rule toàn cục này:
+   .swiper-slide img { max-width:100%; height:auto; }
+   Nếu vẫn cần cho chỗ khác, hãy scope tương tự như trên.
+*/
 
 
 

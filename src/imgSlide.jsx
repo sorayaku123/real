@@ -5,40 +5,24 @@ import 'swiper/css/pagination'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-
 const slides = [
-  {
-    img: "/an phuu.jpg",
-    title: 'Vị trí "kim cương" An Phú',
-    desc: 'Kết nối hoàn hảo…',
-    overlay: true // thêm flag
-  },
-  {
-    img: "/an phuoke.jpg",
-    title: 'Khu đô thị ven sông',
-    desc: 'Thiết kế thông minh, sống xanh mỗi ngày.',
-    overlay: true
-  },
-  {
-    img: "/masterise.webp",
-    title: 'Tâm điểm Ocean Park',
-    desc: 'Sống giữa nhịp đập đại đô thị xanh.',
-    overlay: true
-  }
+  { img: "/an phuu.jpg",   title: 'Vị trí "kim cương" An Phú', desc: 'Kết nối hoàn hảo…', overlay: true },
+  { img: "/an phuoke.jpg", title: 'Khu đô thị ven sông',       desc: 'Thiết kế thông minh, sống xanh mỗi ngày.', overlay: true },
+  { img: "/masterise.webp",title: 'Tâm điểm Ocean Park',       desc: 'Sống giữa nhịp đập đại đô thị xanh.', overlay: true }
 ]
-
 
 export default function Imgslide() {
   return (
     <section>
       <Swiper
+        className="hero-swiper xl:h-[600px]"               // <== quan trọng
         modules={[Pagination]}
         pagination={{
           clickable: true,
           bulletClass: 'swiper-pagination-bullet custom-bullet',
           bulletActiveClass: 'swiper-pagination-bullet-active custom-bullet-active',
         }}
-        loop={true}
+        loop
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
@@ -50,29 +34,24 @@ export default function Imgslide() {
   )
 }
 
-
 function SlideItem({ slide }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.4 })
 
-
   return (
-    <div ref={ref} className="w-full h-screen cursor-grab">
+    // full height theo container Swiper
+    <div ref={ref} className="relative w-full h-full cursor-grab">
       <motion.img
         src={slide.img}
         initial={{ x: '100%' }}
         animate={inView ? { x: '0%' } : {}}
         transition={{ duration: 0.8 }}
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full"   // <== h-full (không dùng h-[500px] ở IMG)
       />
 
-
-      {/* overlay trắng bên trái cho ảnh cần */}
       {slide.overlay && (
-        <div className="absolute top-0 left-0 h-full bg-white"
-             style={{ width: '10%' }} />
+        <div className="absolute top-0 left-0 h-full bg-white" style={{ width: '10%' }} />
       )}
-
 
       <div className="absolute bottom-10 right-6 text-white z-10 max-w-[60%] text-right">
         <motion.h2
@@ -95,6 +74,3 @@ function SlideItem({ slide }) {
     </div>
   )
 }
-
-
-

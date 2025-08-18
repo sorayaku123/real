@@ -142,7 +142,7 @@ export default function Tab() {
             onClick={() => handleMainTabClick(i)}
             className={`px-4 py-2 ${
               i === activeMain
-                ? 'underline decoration-sky-500 decoration-2 underline-offset-8 font-semibold'
+                ? 'underline decoration-sky-300 decoration-2 underline-offset-8 font-semibold'
                 : ''
             }`}
           >
@@ -152,7 +152,7 @@ export default function Tab() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex flex-wrap justify-center mb-4 text-black text-lg xl:text-xl">
+      <div className="flex flex-wrap justify-center mb-4 text-black text-lg">
         {data[activeMain].subs.map((s, i) => (
           <button
             key={i}
