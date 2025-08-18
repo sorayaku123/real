@@ -24,16 +24,18 @@ export default function Navbar({ onSidebarToggle }) {
     return () => clearTimeout(timer)
   }, [])
 
-  // Scroll lên/xuống thì show/hide header
-  const handleScroll = useCallback(() => {
-    const currentY = window.scrollY
-    if (currentY > lastScrollY) {
-      setShowHeader(true) // kéo xuống -> show
-    } else {
-      setShowHeader(false) // kéo lên -> hide
-    }
-    setLastScrollY(currentY)
-  }, [lastScrollY])
+const handleScroll = useCallback(() => {
+  const currentY = window.scrollY
+
+  if (currentY > lastScrollY.current) {
+    setShowHeader(false) // kéo xuống -> ẩn
+  } else {
+    setShowHeader(true) // kéo lên -> hiện
+  }
+
+  lastScrollY.current = currentY
+}, [])
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -58,9 +60,9 @@ export default function Navbar({ onSidebarToggle }) {
       {/* Header */}
       <motion.header
         initial={{ y: -100 }}
-        animate={{ y: showHeader || isOpen ? 10 : -100 }}
+        animate={{ y: showHeader || isOpen ? 0 : -100 }}
         transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md flex items-center justify-between px-5 md:pr-20 xl:pr-10"
+        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md flex items-center justify-between px-5 pr-[50px]"
       >
 
  
@@ -68,14 +70,14 @@ export default function Navbar({ onSidebarToggle }) {
         <img
           src="/logo.png"
           alt="Logo"
-          className="object-contain w-16 h-16 mt-4 mr-4 xl:w-24"
+          className="object-contain w-16 h-16 xl:w-24"
         />
       
 
 
         {/* Toggle button bên phải (mobile) */}
         <button
-          className="relative w-10 h-10 xl:hidden mt-2"
+          className="relative w-10 h-10 xl:hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
           {/* Thanh 1 */}

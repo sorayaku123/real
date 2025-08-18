@@ -176,12 +176,12 @@ const { ref, inView } = useInView({
 
   return (
 
-    <div className="relative">
+    <div className="w-100% w-full">
      
         <Navbar onSidebarToggle={setIsOpen} />
 <main className={`transition-transform duration-500 ease-out ${isOpen ? 'translate-x-[-200px]' : ''}`}>
 
-      <div className="relative h-[500px]">
+      <div className="relative h-[500px] w-full">
         <video
           autoPlay
           muted
@@ -196,7 +196,7 @@ const { ref, inView } = useInView({
     <motion.div
   initial={{ opacity: 0, y: 50 }}
   whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1.2, delay: 0.2 }}
+  transition={{ duration: 2.2, delay: 0.2 }}
   viewport={{ once: true, amount: 0.3 }}
   className="flex flex-col items-center justify-center text-center h-[500px]"
 >
