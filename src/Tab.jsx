@@ -178,20 +178,20 @@ export default function Tab() {
   observer={true}
   observeParents={true}
 
-  className="okela px-0 overflow-visible xl:w-[1100px]" // bắt buộc giữ overflow-visible để show ảnh trái/phải
+  className="okela px-0 overflow-visible xl:w-[1000px]" // bắt buộc giữ overflow-visible để show ảnh trái/phải
 >
   {currentSlides.map((s, i) => (
     <SwiperSlide key={i} className="">
       {({ isActive }) => (
         <div
           className={`
-            relative transition-all duration-300  flex flex-col items-center justify-center 
+            relative transition-all duration-300 flex flex-col items-center justify-center 
             ${isActive ? 'scale-100' : 'z-10 scale-90'}
           `}
         >
 
             
-<div className="">
+<div className="justify-self-center">
             <img
               src={`/${s.img.img}`}
               alt=""
