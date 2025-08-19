@@ -5,7 +5,7 @@
 export default function FeedbackCard({ image, name, role, feedback, size = 'w-64 h-80', index }) {
 
   return (
-    <div className={`relative rounded-lg ${size}`}>
+    <div className={`relative rounded-lg md:flex justify-self-center bg-red-200 ${size}`}>
         <img src={image} alt="" className="w-full h-full object-cover" />
 
         {/* Gradient nền phía dưới */}

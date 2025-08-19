@@ -185,7 +185,7 @@ export default function Tab() {
       {({ isActive }) => (
         <div
           className={`
-            relative transition-all duration-300 flex flex-col items-center justify-center 
+            relative transition-all duration-300 flex flex-col items-center justify-center
             ${isActive ? 'scale-100' : 'z-10 scale-90'}
           `}
         >

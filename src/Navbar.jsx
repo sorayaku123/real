@@ -62,7 +62,7 @@ const handleScroll = useCallback(() => {
         initial={{ y: -100 }}
         animate={{ y: showHeader || isOpen ? 0 : -100 }}
         transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md flex items-center justify-between px-5 pr-[50px]"
+        className="fixed top-0 left-0 z-50 w-full bg-black/40 shadow-md flex items-center justify-between px-5 pr-[20px]"
       >
 
  

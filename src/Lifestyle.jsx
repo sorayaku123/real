@@ -44,7 +44,7 @@ export default function Lifestyle({ imgSrc, title, subtitle, paragraphs, imgBott
   className={`absolute bottom-0 
     ${reverse 
       ? 'left-0 md:right-0 md:left-auto md:scale-x-[-1]' 
-      : 'right-0 md:left-0 top-[172px] md:scale-x-100'
+      : 'right-0 md:left-0 top-[172px] md:scale-x-100 xl:top-[380px]'
     } 
     size-32 brightness-80 transition-all duration-150 
   `}

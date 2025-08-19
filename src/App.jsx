@@ -62,6 +62,7 @@ const container = {
       location: 'Đại đô thị Ocean Park, Dương Xá, Kiêu Kỵ - Đa Tốn, Gia Lâm, Hà Nội',
       url: 'https://masterisehomes.com/masteri-lakeside'
     },  
+
     // Thêm các dự án khác ở đây
   ]
    
@@ -94,7 +95,9 @@ const completedProjects = [
       desc: 'Vị trí đẳng cấp tại Thảo Điền, kết nối thuận tiện đến các quận trung tâm, nơi bạn có thể hòa mình giữa không gian xanh.',
       location: '159 Xa lộ Hà Nội, P. Thảo Điền, TP. Thủ Đức, TP. Hồ Chí Minh',
       url: 'https://masterisehomes.com/masteri-thao-dien'
-    }
+    },
+
+    
 ]
 
 
@@ -123,7 +126,7 @@ const feedbacks = [
 	name: 'Chị Nhã Lê',
 	role: 'Khách hàng',
 	feedback: 'Nhà của mình nhìn xuống hồ bơi rất đẹp và dài, nhìn rất “chill”. Mình cảm thấy rất hài lòng.',
-	size: 'w-64 h-80 xl:w-80 h-96', // mặc định
+	size: 'w-72 h-80 xl:w-80 h-96', // mặc định
   },
   {
 	image: '/thuy.jpg',
@@ -326,7 +329,7 @@ const { ref, inView } = useInView({
   </motion.h1>
 
 
-<div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-start">
     {currentProjects.map((p, i) => (
   <motion.div
     key={i}
@@ -335,11 +338,19 @@ const { ref, inView } = useInView({
     transition={{ duration: 1.2, delay: i * 0.1, ease: "easeInOut" }}
     viewport={{ once: true, amount: 0.3 }}
     className={`
-      ${(i === currentProjects.length - 1 && currentProjects.length % 3 !== 0)
-        ? 'col-span-full flex justify-center' // Cho phần tử cuối ra giữa
-        : ''}
-    `}
-  >
+    ${i === currentProjects.length - 1 &&
+      currentProjects.length % 2 !== 0
+        ? 'md:col-span-2 md:flex md:justify-center'
+        : ''
+    }
+    ${i === currentProjects.length - 1 &&
+      currentProjects.length % 3 !== 0
+        ? 'xl:col-span-3 xl:flex xl:justify-center'
+        : ''
+    }
+  `}
+>
+
     <ProjectCard {...p} />
   </motion.div>
 ))}
@@ -360,7 +371,7 @@ const { ref, inView } = useInView({
   </motion.h1>
 
 
-<div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-start">
     {completedProjects.map((p, i) => (
   <motion.div
     key={i}
@@ -368,12 +379,20 @@ const { ref, inView } = useInView({
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ duration: 1.2, delay: i * 0.1, ease: "easeOut" }}
     viewport={{ once: true, amount: 0.3 }}
-    className={`
-      ${(i === completedProjects.length - 1 && completedProjects.length % 3 !== 0)
-        ? 'col-span-full flex justify-center' // Cho phần tử cuối ra giữa
-        : ''}
-    `}
-  >
+className={`
+    ${i === currentProjects.length - 1 &&
+      currentProjects.length % 2 !== 0
+        ? 'md:col-span-2 md:flex md:justify-center'
+        : ''
+    }
+    ${i === currentProjects.length - 1 &&
+      currentProjects.length % 3 !== 0
+        ? 'xl:col-span-3 xl:flex xl:justify-center'
+        : ''
+    }
+  `}
+>
+
     <ProjectCard {...p} />
   </motion.div>
 ))}
@@ -401,7 +420,7 @@ const { ref, inView } = useInView({
 
 
 
-<div className="grid grid-cols-1 xl:grid-cols-3 gap-y-10  gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-6">
     {upcomingProjects.map((p, i) => (
   <motion.div
     key={i}
@@ -449,7 +468,7 @@ const { ref, inView } = useInView({
   </motion.div>
 
 
-  <div className="space-y-3 pl-2 gap-6 pb-4 justify-start xl:flex justify-center">
+  <div className="space-y-2 pb-4 xl:flex items-center justify-center gap-6 space-y-0 pb-8">
   {feedbacks.map((fb, index) => (
   <motion.div
     key={index}
