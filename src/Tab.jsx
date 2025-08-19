@@ -135,16 +135,18 @@ export default function Tab() {
   return (
     <section className="okela">
       {/* Main Tabs */}
-      <div className="flex justify-center mb-2 text-[#52ccbe] xl:text-xl">
+      <div className="flex justify-center mb-2 text-sky-400 xl:text-xl"  style={{ fontFamily: 'Times New Roman'}}>
         {data.map((d, i) => (
           <button
             key={i}
             onClick={() => handleMainTabClick(i)}
+        
             className={`px-4 py-2 ${
               i === activeMain
                 ? 'underline decoration-sky-300 decoration-2 underline-offset-8 font-semibold'
                 : ''
             }`}
+           
           >
             {d.main}
           </button>
@@ -152,7 +154,7 @@ export default function Tab() {
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex flex-wrap justify-center mb-4 text-black text-lg">
+      <div className="flex flex-wrap justify-center mb-4 text-black text-lg"    style={{ fontFamily: 'Times'}}>
         {data[activeMain].subs.map((s, i) => (
           <button
             key={i}

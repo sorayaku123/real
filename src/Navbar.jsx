@@ -100,9 +100,9 @@ const handleScroll = useCallback(() => {
           />
         </button>
         {/* Desktop menu */}
-        <nav className="hidden xl:flex space-x-8 text-white">
+        <nav className="hidden xl:flex space-x-8 text-amber-100 pr-5">
           <article className="relative group">
-            <motion.a whileHover={{ scale: 1.1 }} className="cursor-pointer hover:text-amber-300">
+            <motion.a whileHover={{ scale: 1.1 }} className="cursor-pointer hover:text-amber-300 font-semibold">
               About
             </motion.a>
             <div className="absolute left-0 bg-amber-50 text-base p-6 mt-5
